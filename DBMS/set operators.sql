@@ -1,0 +1,18 @@
+create table studentinfo(sid number(4) primary key,sname char(20) not null);
+insert into studentinfo values(1,'phanindra');
+insert into studentinfo values(2,'murali');
+insert into studentinfo values(3,'avinash');
+insert into studentinfo values(4,'tarun');
+select * from studentinfo2;
+create table studentinfo2(sid number(4) ,sname char(20));
+insert into studentinfo2 values(2,'sasidhar');
+insert into studentinfo2 values(1,'phanindra');
+insert into studentinfo2 values(3,'avinash');
+insert into studentinfo2 values(4,'prasad');
+commit;
+drop table studentinfo2;
+select * from studentinfo union select * from studentinfo2;
+select * from studentinfo union all select * from studentinfo2;
+select * from studentinfo intersect select * from studentinfo2;
+select * from studentinfo minus select * from studentinfo2;
+commit;

@@ -1,0 +1,23 @@
+create table product(pid number(8) PRIMARY KEY,pname varchar(20),pprice number(8),noofitems number (5));
+INSERT INTO product VALUES (12389,'APPLES',220,12000);
+INSERT INTO product VALUES (12379,'BANANA',140,1200);
+INSERT INTO product VALUES (12363,'GRAPES',190,800);
+INSERT INTO product VALUES (12459,'MANGOES',200,900);
+INSERT INTO product VALUES (12469,'ORANGES',140,2000);
+INSERT INTO product VALUES (12569,'PAPAYA',80,1700);
+INSERT INTO product VALUES (12732,'AVACADO',300,2000);
+select * from orderdetails;
+create table orderdetails(orderid number(8) UNIQUE,pid number(8)PRIMARY KEY,itemname CHAR(20),price number(8),quantity number(8));
+INSERT INTO orderdetails VALUES(54621,12459,'MANGOES',200,30);
+INSERT INTO orderdetails VALUES(54523,12379,'BANANA',140,100);
+INSERT INTO orderdetails VALUES(54461,12389,'APPLES',220,50);
+INSERT INTO orderdetails VALUES(54828,12469,'ORANGES',140,70);
+INSERT INTO orderdetails VALUES(54268,12564,'POMOGRANATE',240,20);
+INSERT INTO orderdetails VALUES(54098,12345,'WATERMELON',180,30);
+select product.pid,product.pname,orderdetails.orderid,orderdetails.price,orderdetails.quantity from product INNER JOIN orderdetails on product.pid=orderdetails.pid;
+select product.pid,product.pname,orderdetails.orderid,orderdetails.price,orderdetails.quantity from product LEFT OUTER JOIN orderdetails on product.pid=orderdetails.pid;
+select product.pid,product.pname,orderdetails.orderid,orderdetails.price,orderdetails.quantity from product RIGHT OUTER JOIN orderdetails on product.pid=orderdetails.pid;
+select product.pid,product.pname,orderdetails.orderid,orderdetails.price,orderdetails.quantity from product FULL OUTER JOIN orderdetails on product.pid=orderdetails.pid;
+select a.pid,a.pname,b.pname,b.pprice from product a,product b where a.pprice<b.pprice;
+select product.pid,pname,orderdetails.orderid from product cross join orderdetails where product.pid=orderdetails.pid;
+commit
